@@ -182,6 +182,12 @@ resource "kubernetes_api_service" "metrics_server" {
     group_priority_minimum = 100
     version_priority = 100
   }
+
+  lifecycle {
+    ignore_changes = [
+      spec[0].service[0].port,
+    ]
+  }
 }
 
 resource "kubernetes_deployment" "metrics_server" {
