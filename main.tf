@@ -247,6 +247,16 @@ resource "kubernetes_deployment" "metrics_server" {
         }
 
         node_selector = var.kubernetes_deployment_node_selector
+
+        dynamic toleration {
+          for_each = var.kubernetes_deployment_tolerations
+          content {
+            key      = toleration.value.key
+            operator = toleration.value.operator
+            value    = toleration.value.value
+            effect   = toleration.value.effect
+          }
+        }
       }
     }
   }

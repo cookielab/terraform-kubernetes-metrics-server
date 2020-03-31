@@ -24,6 +24,17 @@ variable "kubernetes_deployment_node_selector" {
   description = "Node selectors for kubernetes deployment"
 }
 
+variable "kubernetes_deployment_tolerations" {
+  type = list(object({
+    key = string
+    operator = string
+    value = string
+    effect = string
+  }))
+
+  default = []
+}
+
 variable "metrics_server_image" {
   type = string
   default = "k8s.gcr.io/metrics-server-amd64"
