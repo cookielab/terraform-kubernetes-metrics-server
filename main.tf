@@ -213,6 +213,8 @@ resource "kubernetes_deployment" "metrics_server" {
         service_account_name = kubernetes_service_account.metrics_server.metadata.0.name
         automount_service_account_token = true
 
+        priority_class_name = var.kubernetes_priority_class_name
+
         container {
           name = "metrics-server"
           image = "k8s.gcr.io/metrics-server-amd64:v0.3.6"

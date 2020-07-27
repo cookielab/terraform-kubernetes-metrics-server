@@ -35,6 +35,12 @@ variable "kubernetes_deployment_tolerations" {
   default = []
 }
 
+variable "kubernetes_priority_class_name" {
+  type        = string
+  default     = null
+  description = "Priority class name for the kubernetes deployment"
+}
+
 variable "metrics_server_image" {
   type = string
   default = "k8s.gcr.io/metrics-server-amd64"
