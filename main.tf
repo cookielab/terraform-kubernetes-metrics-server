@@ -217,7 +217,7 @@ resource "kubernetes_deployment" "metrics_server" {
 
         container {
           name = "metrics-server"
-          image = "k8s.gcr.io/metrics-server-amd64:v0.3.6"
+          image = "${var.metrics_server_image}:${var.metrics_server_image_tag}"
 
           args = local.deployment_arguments
 
