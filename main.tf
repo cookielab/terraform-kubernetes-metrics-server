@@ -172,7 +172,7 @@ resource "kubernetes_api_service" "metrics_server" {
   }
   spec {
     service {
-      name = "metrics-server"
+      name = "${var.kubernetes_resources_name_prefix}metrics-server"
       namespace = var.kubernetes_namespace
     }
 
